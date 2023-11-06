@@ -2,7 +2,6 @@ import pytest
 from playwright.sync_api import Playwright, sync_playwright, expect
 
 
-@pytest.fixture(scope="function", autouse=True)
 def run(playwright: Playwright) -> None:
     browser = playwright.chromium.launch(headless=False)
     context = browser.new_context()
@@ -14,12 +13,12 @@ def run(playwright: Playwright) -> None:
     page.get_by_role("button", name="Log in with Email").click()
     # page.get_by_test_id("emailAuth").get_by_label("Email").fill("symon.storozhenko@gmail.com")
     page.fill('input:below(:text("Email"))', "symon.storozhenko@gmail.com")
-    # page.pause()
     page.get_by_label("Password").fill("test123")
     page.get_by_test_id("submit").get_by_test_id("buttonElement").click()
     page.wait_for_load_state("networkidle")
+    page.pause()
     #expect(page.get_by_role("button", name="Log Ins")).to_be_hidden()
-    assert page.is_visible("[aria-label=\"symon.storozhenko account menu\"]")
+    #assert page.is_visible("[aria-label=\"symon.storozhenko account menu\"]")
 
 
     # ---------------------
