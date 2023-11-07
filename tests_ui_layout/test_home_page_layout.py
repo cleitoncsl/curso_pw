@@ -9,7 +9,7 @@ def test_about_us_section_verbiage(playwright: Playwright):
     page.wait_for_load_state('networkidle')
 
     assert page.is_visible(HomePage.celebrating_beauty_header)
-    #assert page.is_visible(HomePage.celebrating_beauty_body)
+
 
 
     context.close()
