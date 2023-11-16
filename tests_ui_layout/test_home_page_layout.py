@@ -11,7 +11,6 @@ def test_about_us_section_verbiage(playwright: Playwright):
     assert page.is_visible(HomePage.celebrating_beauty_header)
 
 
-
     context.close()
     browser.close()
 
